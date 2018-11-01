@@ -19,18 +19,14 @@ class App extends Component {
       <Fragment>
         <Route component={HomeWork} />
         <Route exact path="/botquery/" component={HomeWork} />
-        <Route exact path="/botquery/StableInternet" component={StbleInter} />
-        <Route exact path="/botquery/RussianLevel" component={RussianLevel} />
-        <Route exact path="/botquery/Period" component={Period} />
-        <Route exact path="/botquery/TimeWork" component={TimeWork} />
-        <Route exact path="/botquery/Experience" component={Experience} />
-        <Route exact path="/botquery/OurOffer" component={OurOffer} />
-        <Route
-          exact
-          path="/botquery/Congartiluation"
-          component={Congartiluation}
-        />
-        <Route exact path="/botquery/Failure" component={Failure} />
+        <Route path="/botquery/StableInternet" component={StbleInter} />
+        <Route path="/botquery/RussianLevel" component={RussianLevel} />
+        <Route path="/botquery/Period" component={Period} />
+        <Route path="/botquery/TimeWork" component={TimeWork} />
+        <Route path="/botquery/Experience" component={Experience} />
+        <Route path="/botquery/OurOffer" component={OurOffer} />
+        <Route path="/botquery/Congartiluation" component={Congartiluation} />
+        <Route path="/botquery/Failure" component={Failure} />
       </Fragment>
     );
   }
