@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { HomeWork } from "./components/HomeWork";
 import { StbleInter } from "./components/StbleInter.js";
 import { RussianLevel } from "./components/RussianLevel";
@@ -17,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
+        <Redirect to="/botquery/" />
         <Route exact path="/botquery/" component={HomeWork} />
         <Route exact path="/botquery/StableInternet" component={StbleInter} />
         <Route exact path="/botquery/RussianLevel" component={RussianLevel} />
