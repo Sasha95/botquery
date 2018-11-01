@@ -1,7 +1,7 @@
 {
   "main.css": "/botquery/static/css/main.31bdbe92.chunk.css",
-  "main.js": "/botquery/static/js/main.8bef19d8.chunk.js",
-  "main.js.map": "/botquery/static/js/main.8bef19d8.chunk.js.map",
+  "main.js": "/botquery/static/js/main.6a73f38f.chunk.js",
+  "main.js.map": "/botquery/static/js/main.6a73f38f.chunk.js.map",
   "static/css/1.8df3bca9.chunk.css": "/botquery/static/css/1.8df3bca9.chunk.css",
   "static/js/1.84e5b4a7.chunk.js": "/botquery/static/js/1.84e5b4a7.chunk.js",
   "static/js/1.84e5b4a7.chunk.js.map": "/botquery/static/js/1.84e5b4a7.chunk.js.map",
@@ -9,9 +9,9 @@
   "runtime~main.js.map": "/botquery/static/js/runtime~main.8cf91591.js.map",
   "static/media/mdb.css": "/botquery/static/media/Roboto-Regular.df7b648c.ttf",
   "static/media/font-awesome.min.css": "/botquery/static/media/fontawesome-webfont.fee66e71.woff",
-  "static/css/1.8df3bca9.chunk.css.map": "/botquery/static/css/1.8df3bca9.chunk.css.map",
   "static/css/main.31bdbe92.chunk.css.map": "/botquery/static/css/main.31bdbe92.chunk.css.map",
+  "static/css/1.8df3bca9.chunk.css.map": "/botquery/static/css/1.8df3bca9.chunk.css.map",
   "index.html": "/botquery/index.html",
-  "precache-manifest.37e8ed23e8f7b21c1c4334688a29b883.js": "/botquery/precache-manifest.37e8ed23e8f7b21c1c4334688a29b883.js",
+  "precache-manifest.6c2af828edebe92504c2e94c0af0c3f0.js": "/botquery/precache-manifest.6c2af828edebe92504c2e94c0af0c3f0.js",
   "service-worker.js": "/botquery/service-worker.js"
 }
