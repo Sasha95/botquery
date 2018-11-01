@@ -17,15 +17,19 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Route exact path="/" component={HomeWork} />
-        <Route exact path="/StableInternet" component={StbleInter} />
-        <Route exact path="/RussianLevel" component={RussianLevel} />
-        <Route exact path="/Period" component={Period} />
-        <Route exact path="/TimeWork" component={TimeWork} />
-        <Route exact path="/Experience" component={Experience} />
-        <Route exact path="/OurOffer" component={OurOffer} />
-        <Route exact path="/Congartiluation" component={Congartiluation} />
-        <Route exact path="/Failure" component={Failure} />
+        <Route exact path="/botquery/" component={HomeWork} />
+        <Route exact path="/botquery/StableInternet" component={StbleInter} />
+        <Route exact path="/botquery/RussianLevel" component={RussianLevel} />
+        <Route exact path="/botquery/Period" component={Period} />
+        <Route exact path="/botquery/TimeWork" component={TimeWork} />
+        <Route exact path="/botquery/Experience" component={Experience} />
+        <Route exact path="/botquery/OurOffer" component={OurOffer} />
+        <Route
+          exact
+          path="/botquery/Congartiluation"
+          component={Congartiluation}
+        />
+        <Route exact path="/botquery/Failure" component={Failure} />
       </Fragment>
     );
   }
