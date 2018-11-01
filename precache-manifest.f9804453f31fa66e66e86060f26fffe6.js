@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/botquery/static/media/Roboto-Bold.ecdd509c.eot"
   },
   {
-    "revision": "6a73f38f688b17e7e8eb",
+    "revision": "658f626a1e418d19e3ff",
     "url": "/botquery/static/css/main.31bdbe92.chunk.css"
   },
   {
-    "revision": "df7b648ce5356ea1ebce435b3459fd60",
-    "url": "/botquery/static/media/Roboto-Regular.df7b648c.ttf"
+    "revision": "e31fcf1885e371e19f5786c2bdfeae1b",
+    "url": "/botquery/static/media/Roboto-Bold.e31fcf18.ttf"
   },
   {
-    "revision": "84e5b4a785d6a6938778",
-    "url": "/botquery/static/js/1.84e5b4a7.chunk.js"
+    "revision": "1108f1b6632103a2c197",
+    "url": "/botquery/static/js/1.1108f1b6.chunk.js"
   },
   {
     "revision": "8cf91591cbc5dc997809",
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/botquery/static/media/Roboto-Medium.4d9f3f9e.eot"
   },
   {
-    "revision": "6a73f38f688b17e7e8eb",
-    "url": "/botquery/static/js/main.6a73f38f.chunk.js"
+    "revision": "658f626a1e418d19e3ff",
+    "url": "/botquery/static/js/main.658f626a.chunk.js"
   },
   {
     "revision": "954bbdeb86483e4ffea00c4591530ece",
@@ -108,27 +108,27 @@ self.__precacheManifest = [
     "url": "/botquery/static/media/Roboto-Bold.dc81817d.woff"
   },
   {
-    "revision": "894a2ede85a483bf9bedefd4db45cdb9",
-    "url": "/botquery/static/media/Roboto-Medium.894a2ede.ttf"
+    "revision": "46e48ce0628835f68a7369d0254e4283",
+    "url": "/botquery/static/media/Roboto-Light.46e48ce0.ttf"
   },
   {
     "revision": "94998475f6aea65f558494802416c1cf",
     "url": "/botquery/static/media/Roboto-Thin.94998475.ttf"
   },
   {
-    "revision": "e31fcf1885e371e19f5786c2bdfeae1b",
-    "url": "/botquery/static/media/Roboto-Bold.e31fcf18.ttf"
+    "revision": "df7b648ce5356ea1ebce435b3459fd60",
+    "url": "/botquery/static/media/Roboto-Regular.df7b648c.ttf"
   },
   {
-    "revision": "46e48ce0628835f68a7369d0254e4283",
-    "url": "/botquery/static/media/Roboto-Light.46e48ce0.ttf"
+    "revision": "894a2ede85a483bf9bedefd4db45cdb9",
+    "url": "/botquery/static/media/Roboto-Medium.894a2ede.ttf"
   },
   {
-    "revision": "84e5b4a785d6a6938778",
+    "revision": "1108f1b6632103a2c197",
     "url": "/botquery/static/css/1.8df3bca9.chunk.css"
   },
   {
-    "revision": "832e6e0c0f8f2c01a5d058d43ee0f00a",
+    "revision": "93a6caae1201bc4653ea6ec46d740851",
     "url": "/botquery/index.html"
   }
 ];
