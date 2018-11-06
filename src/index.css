@@ -18,7 +18,7 @@ code {
 .title {
   font-family: "source-code-pro", sans-serif;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 150%;
   padding-bottom: 20px;
 }
 
@@ -32,4 +32,78 @@ code {
   font-weight: bold;
   font-size: 18px;
   padding-bottom: 10px;
+}
+
+/* /////////////////// */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.parent {
+  width: 100%;
+  height: 70%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+  text-align: justify;
+}
+
+.card {
+  max-width: 800px;
+  margin: 20px;
+}
+
+.custom-control-label:hover {
+  cursor: pointer !important;
+}
+
+.clen_text {
+  text-align: center;
+  padding-top: 10%;
+  font-size: 120%;
+}
+
+#exp_1 {
+  padding-left: 50px;
+}
+#exp_2 {
+  padding-left: 50px;
+}
+
+.congratula {
+  font-size: 180%;
+}
+
+@media screen and (max-width: 45em) {
+  .parent {
+    height: auto;
+  }
+  .card {
+    font-size: 2.5vw;
+  }
+  .custom-control-label {
+    font-size: 3.8vw;
+  }
+  .sub {
+    font-size: 3.5vw;
+  }
+  #exp_1,
+  #exp_2 {
+    padding-left: 35px;
+  }
+  .congratula {
+    font-size: 4vw !important;
+  }
+  .btn.button_send {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
 }

@@ -7651,6 +7651,12 @@ react-event-listener@^0.6.2, react-event-listener@^0.6.4:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
+react-form-with-constraints@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-form-with-constraints/-/react-form-with-constraints-0.10.0.tgz#71cc1a1739901d0f43aeab70e3bfcccb9fdd9e01"
+  dependencies:
+    prop-types "^15.6.2"
+
 react-google-calendar-events-list@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-google-calendar-events-list/-/react-google-calendar-events-list-1.1.0.tgz#c1fcf3eb563beb3b44d0addaa2ef8fbbd4f2b441"
@@ -7688,6 +7694,13 @@ react-jss@^8.1.0:
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-loader-spinner@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-2.2.0.tgz#dfe3a7be20ca5a9ed269ef467292a4556c723467"
+  dependencies:
+    babel-runtime "^6.26.0"
+    prop-types "^15.6.2"
 
 react-modal@^3.4.4:
   version "3.6.1"

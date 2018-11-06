@@ -4,12 +4,12 @@ import ReactGoogleSheets from "react-google-sheets";
 import { borderShowCalendar } from "./showingData";
 import { Time } from "./time";
 import config from "../../config";
-import { load, write } from "../spreadsheet";
+import { load } from "../spreadsheet";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { fetchData } from "../action";
+import Loader from "react-loader-spinner";
 
-const dayOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+const dayOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт"];
 const monthNames = [
   "Январь",
   "Февраль",
@@ -33,17 +33,41 @@ class Calendars extends Component {
       currentArrayData: [],
       data: new Date(),
       timeFromExcel: [],
-      clickdata: ""
+      clickdata: "",
+      isFetch: false,
+      currentSelectDate: String(
+        new Date().getDate() +
+          "." +
+          Number(new Date().getMonth() + 1) +
+          "." +
+          new Date().getFullYear()
+      ),
+      currentSelectTime: ""
     };
   }
 
   setDate = () => {
-    this.setState({
-      currentArrayData: borderShowCalendar(
-        this.state.data.getFullYear(),
-        this.state.data.getMonth() + 1
-      )
-    });
+    this.setState(
+      {
+        currentArrayData: borderShowCalendar(
+          this.state.data.getFullYear(),
+          this.state.data.getMonth() + 1
+        )
+      },
+      window.gapi.load("client", this.getDataFromNet)
+    );
+    const date =
+      this.state.data.getDate() +
+      "." +
+      Number(this.state.data.getMonth() + 1) +
+      "." +
+      this.state.data.getFullYear();
+    this.setState(
+      {
+        clickdata: date
+      },
+      this.props.date(date)
+    );
   };
 
   componentDidMount() {
@@ -59,87 +83,77 @@ class Calendars extends Component {
         load(this.onLoad);
       });
   };
-  setDataToNet = () => {
-    window.gapi.client
-      .init({
-        apiKey: config.apiKey,
-        discoveryDocs: config.discoveryDocs
-      })
-      .then(() => {
-        write(this.onLoad);
-      });
-  };
 
   onLoad = (isRequest, data) => {
-    console.log(isRequest, data);
-    console.log("click", this.state.clickdata);
     let artime = [];
-    if (isRequest && data.length !== 0) {
+
+    if (data !== undefined && isRequest && data.length !== 0) {
       data.map(x => (x[0] === this.state.clickdata ? artime.push(x[1]) : null));
     }
+
     this.setState({
       timeFromExcel: artime.filter(function(obj) {
         return Time().indexOf(obj) >= 0;
       })
     });
+    this.setState({ isFetch: true });
   };
-  addData = () => {
-    this.props.getSheetsData({ YOUR_SPREADSHEET_NAME: "Sheet1" });
-    this.props.updateCell(
-      "Sheet1", // sheetName
-      "E", // column
-      13, // row
-      "Apple", // value
-      null, // successCallback
-      error => {
-        console.log("error", error);
-      } // errorCallback
-    );
-  };
-
   monthUP = () => {
     this.setState(
       {
-        data: new Date(this.state.data.setMonth(this.state.data.getMonth() + 1))
+        data: new Date(
+          this.state.data.setMonth(this.state.data.getMonth() + 1)
+        ),
+        currentSelectDate: "",
+        currentSelectTime: ""
       },
       this.setDate()
     );
+    this.props.date("");
   };
 
   monthDOWN = () => {
     this.setState(
       {
-        data: new Date(this.state.data.setMonth(this.state.data.getMonth() - 1))
+        data: new Date(
+          this.state.data.setMonth(this.state.data.getMonth() - 1)
+        ),
+        currentSelectDate: "",
+        currentSelectTime: ""
       },
       this.setDate()
     );
+    this.props.date("");
   };
 
   clickDay = event => {
-    console.log(event.target.getAttribute("id"));
-    this.props.fetchData();
-
-    // this.setState(
-    //   { clickdata: event.target.getAttribute("id") },
-    //   window.gapi.load("client", this.getDataFromNet)
-    // );
+    this.setState({
+      currentSelectDate: event.target.id
+    });
+    this.setState({ isFetch: false });
+    this.setState(
+      { clickdata: event.target.getAttribute("id") },
+      this.getDataFromNet()
+    );
+    this.props.date(event.target.getAttribute("id"));
+    this.props.Time({});
   };
 
   clickTime = event => {
-    console.log(event.target.getAttribute("id"));
-    window.gapi.load("client", this.getDataFromNet);
+    this.setState({
+      currentSelectTime: event.target.id
+    });
+    this.props.Time(event.target.getAttribute("id"));
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   afterLoading = () => {
-    const brTime = this.props.getSheetsData({
+    this.props.getSheetsData({
       YOUR_SPREADSHEET_NAME: "Sheet1"
     });
-
-    console.log(brTime);
   };
 
   render() {
-    console.log(this.props);
     return (
       <>
         <ReactGoogleSheets
@@ -179,25 +193,39 @@ class Calendars extends Component {
                   this.state.data.getFullYear()}
               </h3>
               <ul className="sidebar__list">
-                {Time().map((x, index) => (
-                  <li
-                    onClick={this.clickTime}
-                    id={x}
-                    key={index}
-                    className="sidebar__list-item"
-                  >
-                    <span
+                {this.state.isFetch === true && this.props.data.date !== "" ? (
+                  Time().map((x, index) => (
+                    <li
+                      onClick={
+                        this.state.timeFromExcel.indexOf(x) === -1
+                          ? this.clickTime
+                          : null
+                      }
                       id={x}
-                      className={`list-item__time ${
-                        this.state.timeFromExcel.indexOf(x) !== -1
-                          ? "sidebar__list-item--complete"
-                          : ""
-                      }`}
+                      key={index}
+                      className="sidebar__list-item"
                     >
-                      {x}
-                    </span>
-                  </li>
-                ))}
+                      <span
+                        id={x}
+                        className={`list-item__time ${
+                          this.state.timeFromExcel.indexOf(x) !== -1
+                            ? "sidebar__list-item--complete"
+                            : this.state.currentSelectTime === x
+                              ? "selected"
+                              : ""
+                        }`}
+                      >
+                        {x}
+                      </span>
+                    </li>
+                  ))
+                ) : this.props.data.date !== "" ? (
+                  <div className="clen_text">
+                    <Loader type="Watch" color="blue" height="90" width="90" />
+                  </div>
+                ) : (
+                  <div className="clen_text">Выберите число</div>
+                )}
               </ul>
             </div>
 
@@ -208,6 +236,8 @@ class Calendars extends Component {
                     {day}
                   </span>
                 ))}
+                <span className="top-bar__days d-sm-block d-none">Сб</span>
+                <span className="top-bar__days d-sm-block d-none">Вс</span>
               </section>
 
               {this.state.currentArrayData.map(
@@ -217,7 +247,10 @@ class Calendars extends Component {
                       {x.map(
                         (d, j) =>
                           (j + 1) % 6 === 0 || (j + 1) % 7 === 0 ? (
-                            <div key={j} className="calendar__day inactive">
+                            <div
+                              key={j}
+                              className="calendar__day inactive d-sm-block d-none"
+                            >
                               <span
                                 id={d.day + "." + d.month + "." + d.year}
                                 className="calendar__date"
@@ -230,7 +263,12 @@ class Calendars extends Component {
                               <span
                                 onClick={this.clickDay}
                                 id={d.day + "." + d.month + "." + d.year}
-                                className="calendar__date"
+                                className={`calendar__date ${
+                                  this.state.currentSelectDate ===
+                                  String(d.day + "." + d.month + "." + d.year)
+                                    ? "selected"
+                                    : ""
+                                }`}
                               >
                                 {d.day}
                               </span>
@@ -252,17 +290,19 @@ class Calendars extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    isFetching: state.appData.isFetching,
-    data: state.appData.data,
-    store: state
-  };
-}
-
 export default compose(
   connect(
-    mapStateToProps,
-    { fetchData }
+    state => ({
+      data: state,
+      time: state
+    }),
+    dispatch => ({
+      date: dat => {
+        dispatch({ type: "DATE", payload: dat });
+      },
+      Time: time => {
+        dispatch({ type: "TIME", payload: time });
+      }
+    })
   )(ReactGoogleSheets.connect(Calendars))
 );

@@ -8,7 +8,7 @@ export const Time = () => {
     time.setMinutes(time.getMinutes() + 15);
     timeAr.push(
       time.getMinutes() === 0
-        ? time.getHours() + ":" + "00"
+        ? time.getHours() + ":00"
         : time.getHours() + ":" + String(time.getMinutes())
     );
   }
@@ -19,7 +19,7 @@ export const Time = () => {
 
     timeAr.push(
       time.getMinutes() === 0
-        ? time.getHours() + ":" + "00"
+        ? time.getHours() + ":00"
         : time.getHours() + ":" + String(time.getMinutes())
     );
   }

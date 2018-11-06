@@ -1,28 +1,4 @@
 import config from "../config";
-import {
-  FETCHING_DATA,
-  FETCHING_DATA_SUCCESS,
-  FETCHING_DATA_FAILURE
-} from "./constans";
-
-export function getData() {
-  return {
-    type: FETCHING_DATA
-  };
-}
-
-export function getDataSuccess(data) {
-  return {
-    type: FETCHING_DATA_SUCCESS,
-    data
-  };
-}
-
-export function getDataFailure() {
-  return {
-    type: FETCHING_DATA_FAILURE
-  };
-}
 
 export function load(callback) {
   window.gapi.client.load("sheets", "v4", () => {
@@ -43,7 +19,17 @@ export function load(callback) {
   });
 }
 
-export function write(callback) {
+export function write(
+  callback,
+  date = "",
+  time = "",
+  email = "отсутствует",
+  messenger = "отсутствует",
+  phone = "отсутствует",
+  Experience = "",
+  levelLan = "",
+  periodWork = ""
+) {
   window.gapi.client.load("sheets", "v4", () => {
     window.gapi.client.sheets.spreadsheets.values
       .append({
@@ -53,13 +39,23 @@ export function write(callback) {
         // valueRenderOption: "UNFORMATTED_VALUE",
         valueInputOption: "USER_ENTERED",
         resource: {
-          values: [["Void", "Canvas", "Website"], ["Paul", "Shan", "Human"]]
+          values: [
+            [
+              date,
+              time,
+              email,
+              messenger,
+              phone,
+              Experience,
+              levelLan,
+              periodWork
+            ]
+          ]
         }
       })
       .then(
         response => {
-          const data = response.result.values;
-          callback(true, data);
+          callback(true, response.result.values);
           // console.log("data", data);
         },
         response => {

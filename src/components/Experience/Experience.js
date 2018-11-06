@@ -1,8 +1,11 @@
 import React, { Fragment, Component } from "react";
 import { richExp } from "./richExp";
 import { Btn } from "../Btn";
+import { connect } from "react-redux";
 
-export class Experience extends Component {
+const text = ["До 2 лет", "От 2 до 5 лет", "5 лет и более"];
+
+class Experience extends Component {
   state = {
     isExperience: false,
     moreTwo: false
@@ -13,13 +16,17 @@ export class Experience extends Component {
   no = () => {
     this.setState({ isExperience: false, moreTwo: false });
   };
-  richyes = () => {
+  richyes = e => {
     this.setState({ moreTwo: true });
+    this.props.Experience(e.target.value);
   };
-  richno = () => {
+  richno = e => {
     this.setState({ moreTwo: false });
+    this.props.Experience(e.target.value);
   };
-
+  componentDidMount() {
+    this.props.Experience("нет опыта");
+  }
   whatExp = () => {
     return (
       <Fragment>
@@ -31,12 +38,13 @@ export class Experience extends Component {
             id="defaultGroupExample1"
             name="groupOfDefaultRadios"
             defaultChecked
+            value={text[0]}
           />
           <label
             className="custom-control-label"
             htmlFor="defaultGroupExample1"
           >
-            До 2 лет
+            {text[0]}
           </label>
         </div>
 
@@ -46,12 +54,13 @@ export class Experience extends Component {
             className="custom-control-input"
             id="defaultGroupExample2"
             name="groupOfDefaultRadios"
+            value={text[1]}
           />
           <label
             className="custom-control-label"
             htmlFor="defaultGroupExample2"
           >
-            От 2 до 5 лет
+            {text[1]}
           </label>
         </div>
 
@@ -61,58 +70,71 @@ export class Experience extends Component {
             className="custom-control-input"
             id="defaultGroupExample3"
             name="groupOfDefaultRadios"
+            value={text[2]}
           />
           <label
             className="custom-control-label"
             htmlFor="defaultGroupExample3"
           >
-            5 лет и более
+            {text[2]}
           </label>
         </div>
-        {this.state.moreTwo ? (
-          <div style={{ paddingLeft: "50px" }}> {richExp()}</div>
-        ) : (
-          ""
-        )}
+        {this.state.moreTwo ? <div id="exp_2"> {richExp()}</div> : ""}
       </Fragment>
     );
   };
   render() {
     return (
-      <div className="card w-50 p-4 w-50">
-        <div className="title">Есть ли у вас опыт работы в продажах?</div>
-        <div className="card-body p-0">
-          <div onChange={this.yes} className="custom-control custom-radio">
-            <input
-              type="radio"
-              className="custom-control-input"
-              id="defaultUnchecked"
-              name="defaultExampleRadios"
-            />
-            <label className="custom-control-label" htmlFor="defaultUnchecked">
-              Да
-            </label>
+      <div className="parent">
+        <div className="card p-4">
+          <div className="title">Есть ли у вас опыт работы в продажах?</div>
+          <div className="card-body p-0">
+            <div onChange={this.yes} className="custom-control custom-radio">
+              <input
+                type="radio"
+                className="custom-control-input"
+                id="defaultUnchecked"
+                name="defaultExampleRadios"
+              />
+              <label
+                className="custom-control-label"
+                htmlFor="defaultUnchecked"
+              >
+                Да
+              </label>
+            </div>
+            {this.state.isExperience ? (
+              <div id="exp_1"> {this.whatExp()}</div>
+            ) : (
+              ""
+            )}
+            <div onChange={this.no} className="custom-control custom-radio">
+              <input
+                type="radio"
+                className="custom-control-input"
+                id="defaultChecked"
+                name="defaultExampleRadios"
+                defaultChecked
+              />
+              <label className="custom-control-label" htmlFor="defaultChecked">
+                Нет
+              </label>
+            </div>
+            {Btn(false, "/botquery/OurOffer")}
           </div>
-          {this.state.isExperience ? (
-            <div style={{ paddingLeft: "50px" }}> {this.whatExp()}</div>
-          ) : (
-            ""
-          )}
-          <div onChange={this.no} className="custom-control custom-radio">
-            <input
-              type="radio"
-              className="custom-control-input"
-              id="defaultChecked"
-              name="defaultExampleRadios"
-              defaultChecked
-            />
-            <label className="custom-control-label" htmlFor="defaultChecked">
-              Нет
-            </label>
-          </div>
-          {Btn(false, "/botquery/OurOffer")}
         </div>
       </div>
     );
   }
 }
+
+export default connect(
+  state => ({
+    exepience: state
+  }),
+  dispatch => ({
+    Experience: exp => {
+      dispatch({ type: "EXPERIENCE", payload: exp });
+    }
+  })
+)(Experience);
