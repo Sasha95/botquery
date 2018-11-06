@@ -104,10 +104,7 @@ class Congartiluation extends Component {
     if (this.state.isFetch)
       return (
         <>
-          <div className="parent" style={{ height: "70%", fontSize: "3.5rem" }}>
-            Отправка данных ...
-          </div>
-          <div className="parent" style={{ height: "100%" }}>
+          <div className="parent adv">
             <Loader type="Triangle" color="green" height="100" width="100" />
           </div>
         </>

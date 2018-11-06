@@ -83,7 +83,7 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 45em) {
-  .parent {
+  .parent:not(.adv) {
     height: auto;
   }
   .card {
