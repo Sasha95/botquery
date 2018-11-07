@@ -1,7 +1,7 @@
 {
   "main.css": "/botquery/static/css/main.3e34a155.chunk.css",
-  "main.js": "/botquery/static/js/main.69c23324.chunk.js",
-  "main.js.map": "/botquery/static/js/main.69c23324.chunk.js.map",
+  "main.js": "/botquery/static/js/main.2c2d9f5e.chunk.js",
+  "main.js.map": "/botquery/static/js/main.2c2d9f5e.chunk.js.map",
   "static/css/1.70371d3e.chunk.css": "/botquery/static/css/1.70371d3e.chunk.css",
   "static/js/1.f8197939.chunk.js": "/botquery/static/js/1.f8197939.chunk.js",
   "static/js/1.f8197939.chunk.js.map": "/botquery/static/js/1.f8197939.chunk.js.map",
@@ -12,6 +12,6 @@
   "static/css/main.3e34a155.chunk.css.map": "/botquery/static/css/main.3e34a155.chunk.css.map",
   "static/css/1.70371d3e.chunk.css.map": "/botquery/static/css/1.70371d3e.chunk.css.map",
   "index.html": "/botquery/index.html",
-  "precache-manifest.67ec681120a73ec6c5e507665007459a.js": "/botquery/precache-manifest.67ec681120a73ec6c5e507665007459a.js",
+  "precache-manifest.6dda1fb2e6b2761a65e742fd74e6c526.js": "/botquery/precache-manifest.6dda1fb2e6b2761a65e742fd74e6c526.js",
   "service-worker.js": "/botquery/service-worker.js"
 }
