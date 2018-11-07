@@ -157,11 +157,9 @@ class Calendars extends Component {
     return (
       <>
         <ReactGoogleSheets
-          clientId={
-            "920801246629-o5oli34pl2jo3ur2plph66to2acni896.apps.googleusercontent.com"
-          }
-          apiKey={"AIzaSyAuTv17FnWSQeXcr_AlFYBZcrJ6wsEyCoE"}
-          spreadsheetId={"1Krdol9st8XaugOEdHByud5bvBhy1CrmREHoE8-Ipnbc"}
+          clientId={config.clientId}
+          apiKey={config.apiKey}
+          spreadsheetId={config.spreadsheetId}
           afterLoading={this.afterLoading}
         />
         {this.state.currentArrayData !== [] ? (
